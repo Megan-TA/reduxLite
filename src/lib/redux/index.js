@@ -1,3 +1,4 @@
+// 接受一个reducer reducer必须是一个新对象
 function createStore(reducer) {
   let state;
 

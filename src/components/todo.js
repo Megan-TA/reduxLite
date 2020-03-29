@@ -17,7 +17,7 @@ export default class Counter extends React.Component {
     this.unsubscribe = null;
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.unsubscribe = store.subscribe(() => {
       this.setState({
         ...this.state,

@@ -1,11 +1,10 @@
 /*
-    第一版 完全不封装使用redux
-    
+    第二版 使用actionCreator创建动作
 */
 
 import React from "react";
 import store from "../store";
-import * as Types from "../store/types";
+import actions from "../store/actions/counter";
 
 export default class Counter extends React.Component {
   constructor(props) {
@@ -18,7 +17,7 @@ export default class Counter extends React.Component {
     this.unsubscribe = null;
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.unsubscribe = store.subscribe(() => {
       this.setState({
         number: store.getState().c.number
@@ -37,14 +36,14 @@ export default class Counter extends React.Component {
 
         <button
           onClick={() => {
-            store.dispath({ type: Types.INCREMENT, count: 2 });
+            store.dispath(actions.add(2));
           }}
         >
           +
         </button>
         <button
           onClick={() => {
-            store.dispath({ type: Types.DECREMENT, count: 2 });
+            store.dispath(actions.minus(2));
           }}
         >
           -

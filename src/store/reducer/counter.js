@@ -6,14 +6,15 @@ let initState = {
 
 function reducer(state = initState, action) {
   switch (action.type) {
-    case Types.DECREMENT:
-      return { ...state, number: state.number - action.count };
     case Types.INCREMENT:
       return { ...state, number: state.number + action.count };
+    case Types.DECREMENT:
+      // 必须返回新的对象 不能修改原来的state
+      return { ...state, number: state.number - action.count };
+
     default:
-      break;
+      return state;
   }
-  return state;
 }
 
 export default reducer;
